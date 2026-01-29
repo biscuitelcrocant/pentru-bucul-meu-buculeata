@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpriză pentru tine</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #fce4ec;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .step { display: none; }
+        .step.active { display: block; }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #f06292;
+            color: white;
+            font-size: 16px;
+        }
+        button:hover { background-color: #ec407a; }
+        img { max-width: 100%; border-radius: 10px; margin-top: 10px; }
+        #slider-container { margin: 20px 0; }
+        input[type=range] { width: 100%; }
+        .cat-march { display: flex; overflow: hidden; white-space: nowrap; }
+        .cat-march img { width: 100px; animation: march 5s linear infinite; }
+        @keyframes march {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <iframe width="0" height="0" src="https://www.youtube.com/embed/zIzrvRRa0zU?autoplay=1" frameborder="0" allow="autoplay"></iframe>
+
+    <div id="step1" class="step active">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bjR5Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3JmS9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M/l41lTfR8F1W5L3u7G/giphy.gif" alt="Pisică cu ochelari">
+        <h2>Ești pe fază?</h2>
+        <button onclick="nextStep(3)">Nu</button>
+        <button onclick="nextStep(2)">Da</button>
+    </div>
+
+    <div id="step1-nu" class="step">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bjR5Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3JmS9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M/2UIvvW9ue6NfG/giphy.gif" alt="Pisică plângând">
+        <h2>Ești sigur?</h2>
+        <button onclick="nextStep(1)">Înapoi</button>
+    </div>
+
+    <div id="step2" class="step">
+        <div class="cat-march">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bjR5Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3JmS9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M/3o7TKMGVqS6V9S/giphy.gif" alt="Pisici în șir indian">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bjR5Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3JmS9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M/3o7TKMGVqS6V9S/giphy.gif" alt="Pisici în șir indian">
+        </div>
+        <h2>Cât de mult mă iubești?</h2>
+        <div id="slider-container">
+            <input type="range" id="loveSlider" min="0" max="100" value="0" oninput="checkSlider()">
+        </div>
+        <button id="nextBtn" style="display:none;" onclick="nextStep(4)">Următorul</button>
+    </div>
+
+    <div id="step4" class="step">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bjR5Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3JmS9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M/VbnUQpnihPSIgSPanh/giphy.gif" alt="Pisică cu ochelari">
+        <h2>Știai că... iubirea e ca Wi-Fi-ul?</h2>
+        <p>Când e puternică, merge fără probleme, când e slabă, începi să te apropii mai mult... și tot la mine ajungi ☝️</p>
+        <button onclick="nextStep(5)">Nu știam, hai să continuăm</button>
+        <button onclick="nextStep(6)">Da știam, nu mă mai plictisi</button>
+    </div>
+
+    <div id="step6" class="step">
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bjR5Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3JmS9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M/7SF5scGB2AFrO/giphy.gif" alt="Pisică plângând în hohote">
+        <button onclick="nextStep(4)">Înapoi</button>
+    </div>
+
+    <div id="step5" class="step">
+        <h2>Vrei să fii valentinul meu?</h2>
+        <button onclick="alert('Te rog spune DA! ❤️')">Nu</button>
+        <button onclick="nextStep(7)">Da</button>
+    </div>
+
+    <div id="step7" class="step">
+        <h2>yeyyyyy te iubu, sper ca și tu ❤️</h2>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z0bjR5Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3Z3B3JmS9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M9M/MDJ9IbxxvDUQM/giphy.gif" alt="Pisici fericite">
+    </div>
+</div>
+
+<script>
+    function nextStep(step) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        if (step === 1) document.getElementById('step1').classList.add('active');
+        if (step === 2) document.getElementById('step2').classList.add('active');
+        if (step === 3) document.getElementById('step1-nu').classList.add('active');
+        if (step === 4) document.getElementById('step4').classList.add('active');
+        if (step === 5) document.getElementById('step5').classList.add('active');
+        if (step === 6) document.getElementById('step6').classList.add('active');
+        if (step === 7) document.getElementById('step7').classList.add('active');
+    }
+
+    function checkSlider() {
+        var slider = document.getElementById('loveSlider');
+        if (slider.value == 100) {
+            document.getElementById('nextBtn').style.display = 'inline-block';
+        }
+    }
+</script>
+
+</body>
+</html>
