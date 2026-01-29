@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pentru Iubitul Meu</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background-color: #fff0f5; color: #4a4a4a; margin: 0; padding: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; background-color: #fff0f5; margin: 0; padding: 20px; }
         .box { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 350px; margin: 40px auto; border: 2px solid #ffc1e3; }
-        img { width: 100%; border-radius: 15px; margin-bottom: 20px; display: block; }
+        img { width: 100%; border-radius: 15px; margin-bottom: 20px; display: block; height: auto; }
         button { background: #ff69b4; color: white; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-size: 16px; margin: 10px auto; font-weight: bold; width: 80%; display: block; }
-        button:active { transform: scale(0.95); background: #ff1493; }
         .hidden { display: none; }
-        input[type=range] { width: 100%; accent-color: #ff69b4; margin: 20px 0; }
-        h2, h3 { color: #d81b60; margin-top: 0; }
+        input[type=range] { width: 100%; accent-color: #ff69b4; }
+        h2, h3 { color: #d81b60; }
     </style>
 </head>
 <body>
@@ -20,12 +19,11 @@
 <div class="box">
     <div id="step0">
         <h2>O mică surpriză... 🎁</h2>
-        <p>Apasă butonul de mai jos!</p>
         <button onclick="startEverything()">DESCHIDE</button>
     </div>
 
     <div id="step1" class="hidden">
-        <img src="https://images.squarespace-cdn.com/content/v1/55ba7027e4b060662660a927/1460399121961-A7Y0K9F5L7M0G0X8V8Y8/cool-cat.jpg?format=500w" alt="Pisică cool">
+        <img src="https://i.imgur.com/7SjL7XJ.jpg" alt="Pisică Cool">
         <h3>Ești pe fază?</h3>
         <button onclick="alert('Ești sigur? 😿'); showStep(1)">Nu</button>
         <button onclick="showStep(2)">Da</button>
@@ -39,17 +37,10 @@
     </div>
 
     <div id="step3" class="hidden">
-        <img src="https://cdn.pixabay.com/photo/2014/04/13/20/49/cat-323262_640.jpg" alt="Pisică Wi-Fi">
+        <img src="https://i.imgur.com/G5O0Kst.jpg" alt="Pisică Wi-Fi">
         <p><b>Știai că... iubirea e ca Wi-Fi-ul?</b></p>
         <p>Când e puternică, merge fără probleme, când e slabă, începi să te apropii mai mult… și tot la mine ajungi ☝️</p>
         <button onclick="showStep(4)">Hai să continuăm</button>
-        <button onclick="alert('Nu mă mai plictisi? 😿'); showStep(6)">Da știam, nu mă mai plictisi</button>
-    </div>
-
-    <div id="step6" class="hidden">
-        <img src="https://cdn.pixabay.com/photo/2017/11/14/13/06/kitty-2948404_640.jpg" alt="Pisică tristă">
-        <h3>Te-am plictisit? 😿</h3>
-        <button onclick="showStep(3)">Înapoi, promit că sunt cuminte</button>
     </div>
 
     <div id="step4" class="hidden">
@@ -60,8 +51,7 @@
 
     <div id="step5" class="hidden">
         <h1>yeyyyyy te iubu! ❤️🥰</h1>
-        <p>Sper că și tu la fel!</p>
-        <img src="https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_640.jpg" alt="Pisici fericite">
+        <img src="https://i.imgur.com/mO24vC3.jpg" alt="Pisici Fericite">
     </div>
 </div>
 
@@ -72,12 +62,10 @@
         document.getElementById('music-container').innerHTML = '<iframe width="0" height="0" src="https://www.youtube.com/embed/zIzrvRRa0zU?autoplay=1" frameborder="0" allow="autoplay"></iframe>';
         showStep(1);
     }
-
     function showStep(n) {
         document.querySelectorAll('.box > div').forEach(div => div.classList.add('hidden'));
         document.getElementById('step' + n).classList.remove('hidden');
     }
-
     function checkSlider() {
         var val = document.getElementById('loveSlider').value;
         if (val >= 95) {
