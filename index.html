@@ -2,16 +2,19 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pentru Iubitul Meu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pentru Tine ❤️</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; text-align: center; background-color: #fff0f5; margin: 0; padding: 20px; }
-        .box { background: white; padding: 30px; border-radius: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); max-width: 350px; margin: 40px auto; border: 2px solid #ffc1e3; }
-        img { width: 100%; border-radius: 15px; margin-bottom: 20px; display: block; height: auto; }
-        button { background: #ff69b4; color: white; border: none; padding: 12px 20px; border-radius: 50px; cursor: pointer; font-size: 16px; margin: 10px auto; font-weight: bold; width: 80%; display: block; }
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; background-color: #fff0f5; margin: 0; padding: 15px; overflow-x: hidden; }
+        .box { background: white; padding: 20px; border-radius: 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); max-width: 320px; margin: 20px auto; border: 2px solid #ffc1e3; }
+        img { width: 100%; border-radius: 15px; margin-bottom: 15px; display: block; height: auto; min-height: 200px; background: #fefefe; }
+        button { background: #ff69b4; color: white; border: none; padding: 14px 20px; border-radius: 50px; cursor: pointer; font-size: 16px; margin: 8px auto; font-weight: bold; width: 100%; display: block; -webkit-tap-highlight-color: transparent; }
+        button:active { background: #ff1493; transform: scale(0.98); }
         .hidden { display: none; }
-        input[type=range] { width: 100%; accent-color: #ff69b4; }
-        h2, h3 { color: #d81b60; }
+        input[type=range] { width: 100%; height: 25px; accent-color: #ff69b4; margin: 15px 0; }
+        h2, h3 { color: #d81b60; font-size: 20px; margin-bottom: 10px; }
+        p { font-size: 15px; line-height: 1.4; color: #555; }
+        #music-status { font-size: 11px; color: #999; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -19,32 +22,33 @@
 <div class="box">
     <div id="step0">
         <h2>O mică surpriză... 🎁</h2>
-        <button onclick="startEverything()">DESCHIDE</button>
+        <p>Asigură-te că ai volumul pornit!</p>
+        <button onclick="startEverything()">APASĂ SĂ VEZI</button>
     </div>
 
     <div id="step1" class="hidden">
         <img src="https://i.imgur.com/7SjL7XJ.jpg" alt="Pisică Cool">
         <h3>Ești pe fază?</h3>
-        <button onclick="alert('Ești sigur? 😿'); showStep(1)">Nu</button>
+        <button onclick="alert('Ești sigur? 😿')">Nu</button>
         <button onclick="showStep(2)">Da</button>
     </div>
 
     <div id="step2" class="hidden">
         <h3>Cât de mult mă iubești? ❤️</h3>
         <input type="range" id="loveSlider" min="1" max="100" value="1" oninput="checkSlider()">
-        <p id="sliderText">Trage de el până la sfârșit! ☝️</p>
+        <p id="sliderText">Trage de bară până la capăt! ☝️</p>
         <button id="nextBtn" class="hidden" onclick="showStep(3)">Următorul</button>
     </div>
 
     <div id="step3" class="hidden">
         <img src="https://i.imgur.com/G5O0Kst.jpg" alt="Pisică Wi-Fi">
         <p><b>Știai că... iubirea e ca Wi-Fi-ul?</b></p>
-        <p>Când e puternică, merge fără probleme, când e slabă, începi să te apropii mai mult… și tot la mine ajungi ☝️</p>
+        <p>Când e puternică, merge brici, când e slabă, te apropii mai mult… și tot la mine ajungi ☝️</p>
         <button onclick="showStep(4)">Hai să continuăm</button>
     </div>
 
     <div id="step4" class="hidden">
-        <h2>Vrei să fii valentinul meu? ❤️</h2>
+        <h2>Vrei să fii Valentinul meu? ❤️</h2>
         <button onclick="alert('Nu poți apăsa nu! 😜')">Nu</button>
         <button onclick="showStep(5)">DA! ❤️</button>
     </div>
@@ -52,23 +56,39 @@
     <div id="step5" class="hidden">
         <h1>yeyyyyy te iubu! ❤️🥰</h1>
         <img src="https://i.imgur.com/mO24vC3.jpg" alt="Pisici Fericite">
+        <p>Trimite-mi un screenshot acum! 😍</p>
     </div>
+    
+    <div id="music-status">🎵 Muzica se încarcă la start...</div>
 </div>
 
-<div id="music-container"></div>
+<div id="player"></div>
 
 <script>
     function startEverything() {
-        document.getElementById('music-container').innerHTML = '<iframe width="0" height="0" src="https://www.youtube.com/embed/zIzrvRRa0zU?autoplay=1" frameborder="0" allow="autoplay"></iframe>';
+        // Deblochează muzica - Metoda sigură pentru mobil
+        document.getElementById('player').innerHTML = 
+            '<iframe width="0" height="0" src="https://www.youtube.com/embed/zIzrvRRa0zU?autoplay=1&controls=0" frameborder="0" allow="autoplay"></iframe>';
+        document.getElementById('music-status').innerText = "🎵 Muzică activă";
         showStep(1);
     }
+
     function showStep(n) {
-        document.querySelectorAll('.box > div').forEach(div => div.classList.add('hidden'));
+        // Ascunde tot
+        document.getElementById('step0').classList.add('hidden');
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.add('hidden');
+        document.getElementById('step3').classList.add('hidden');
+        document.getElementById('step4').classList.add('hidden');
+        document.getElementById('step5').classList.add('hidden');
+        // Arată pasul n
         document.getElementById('step' + n).classList.remove('hidden');
+        window.scrollTo(0, 0); // Revino sus pe ecran
     }
+
     function checkSlider() {
         var val = document.getElementById('loveSlider').value;
-        if (val >= 95) {
+        if (val >= 98) {
             document.getElementById('nextBtn').classList.remove('hidden');
             document.getElementById('sliderText').innerHTML = "Așa da! 😍";
         }
